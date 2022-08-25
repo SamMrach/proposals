@@ -1,10 +1,23 @@
 {
-  "name": "Getting Started Example",
-  "author": "Abdullah",
-  "description": "Boilerplate for Chrome Extension with React and Tailwind!",
+  "name": "Upwork proposals",
+  "author": "Samir merrach",
+  "description": " Chrome Extension with React and Tailwind!",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html"
+  },
+  "permissions":["tabs"],
+  "content_scripts":[
+    {
+      "run_at":"document_start",
+      "matches": [ "http://www.upwork.com/ab/proposals/job/*", "https://www.upwork.com/ab/proposals/job/*",
+      "https://*.learnxinyminutes.com/*" 
+    ],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
   }
 }
