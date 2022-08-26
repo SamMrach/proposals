@@ -21,13 +21,13 @@ const useStyles=makeStyles(theme=>({
     display:'flex',
   }
 }))
-const Modal = () => {
-   let initialstate=ourStore.getState().show;
-    const[open,setOpen]=useState(initialstate);
-    //const {open,setOpen}=useContext(Mycontext);
-    ourStore.subscribe(()=>{
-      setOpen(ourStore.getState().show)
-    })
+const Modal = ({toggle,state}) => {
+  //  let initialstate=ourStore.getState().show;
+  //   const[open,setOpen]=useState(initialstate);
+  //   //const {open,setOpen}=useContext(Mycontext);
+  //   ourStore.subscribe(()=>{
+  //     setOpen(ourStore.getState().show)
+  //   })
     const styles=useStyles();
     const toggleDrawer=()=>{
       toggle();
@@ -36,7 +36,7 @@ const Modal = () => {
 
      <Drawer
         anchor="right"
-        open={open}
+        open={state.show}
         onClose={toggleDrawer}
         PaperProps={{ style: { width: '25%' } }}
      >

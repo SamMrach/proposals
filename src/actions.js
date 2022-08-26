@@ -1,7 +1,9 @@
 import {ourStore} from "./reducer";
 
 export const toggle=()=>{
-    ourStore.dispatch({
+    return dispatch=>{
+        dispatch({
         type:'toggle'
     })
+    }
 }

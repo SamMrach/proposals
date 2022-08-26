@@ -3,13 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './components/Modal';
 import ContextProvider from './ContextProvider';
+import Container from "./Container";
+import { Provider } from 'react-redux';
+import {ourStore} from "./reducer";
 document.addEventListener('DOMContentLoaded',()=>{
     // waitForElement().then(elem=>{
     //     insertButton();
     //     insertDrawer();
     // })
 
-    insertMaterial();
+    insertButton();
     insertDrawer();
   
 })
@@ -29,16 +32,17 @@ function waitForElement(){
         });
     })
 }
-const insertMaterial=()=>{
+const insertButton=()=>{
     let container=document.createElement('div');
     container.style.cssText="height:40px,display:block,border:1px solid black";
     //let coverElement=document.getElementsByClassName('form-group up-form-group')[2];
     let coverElement=document.getElementsByClassName('theme-choice')[0];
         coverElement.prepend(container);
+    var Cont=Container(MyButton);
         ReactDOM.render(
-            <>
-                <MyButton/>
-            </>
+            <Provider store={ourStore} >
+                <Cont/>
+            </Provider>
             ,
             container
         )
@@ -48,8 +52,12 @@ const insertDrawer=()=>{
     div.className="ourDrawer";
     div.style.cssText='display:block;height:100vh;width:250px';
     document.body.appendChild(div);
+    let ModalContainer=Container(Modal);
     ReactDOM.render(
-                <Modal/>,
+        <Provider store={ourStore}>
+          <ModalContainer/>
+        </Provider>
+                ,
         div
     )
 }

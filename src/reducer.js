@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore,applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 const initialState={
     show:false
 }
@@ -14,4 +15,9 @@ function ourReducer(state=initialState,action){
             return state
   }
 }
-export const ourStore= createStore(ourReducer);
+const createStoreWithMiddleWare= applyMiddleware(
+  thunk
+)(createStore);
+  
+
+export const ourStore= createStoreWithMiddleWare(ourReducer);
