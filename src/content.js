@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     // })
 
     insertMaterial();
+    insertDrawer();
   
 })
 function waitForElement(){
@@ -37,21 +38,18 @@ const insertMaterial=()=>{
         ReactDOM.render(
             <>
                 <MyButton/>
-                <Modal/>
             </>
             ,
             container
         )
 }
-// const insertDrawer=()=>{
-//     let div=document.createElement('div');
-//     div.className="ourDrawer";
-//     div.style.cssText='display:block;height:100vh;width:250px';
-//     document.body.appendChild(div);
-//     ReactDOM.render(
-//         <ContextProvider>
-//                 <Modal/>
-//         </ContextProvider>,
-//         div
-//     )
-// }
+const insertDrawer=()=>{
+    let div=document.createElement('div');
+    div.className="ourDrawer";
+    div.style.cssText='display:block;height:100vh;width:250px';
+    document.body.appendChild(div);
+    ReactDOM.render(
+                <Modal/>,
+        div
+    )
+}
